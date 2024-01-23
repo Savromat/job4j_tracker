@@ -2,11 +2,10 @@ package ru.job4j.pojo;
 
 public class Library {
 
-    public static Book[] changeBooks(Book[] array, int index1, int index2) {
-        Book i = null;
-        i = array[index1];
-        array[index1] = array[index2];
-        array[index2] = i;
+    public static Book[] changeBooks(Book[] array, int a, int b) {
+        Book c = array[a];
+        array[a] = array[b];
+        array[b] = c;
         return array;
     }
 
@@ -33,7 +32,7 @@ public class Library {
         System.out.println("Вывод книг с именем \"Clean code\"");
         for (int i = 0; i < books.length; i++) {
             Book book = books[i];
-            if (books[i].getName().equals("Clean code")) {
+            if ("Clean code".equals(books[i].getName())) {
                 System.out.println(book.getName() + " - " + book.getPages());
             }
         }
