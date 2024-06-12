@@ -55,6 +55,13 @@ public class Tracker {
     }
 
     public void delete(int id) {
-        items[indexOf(id)] = null;
+        int index = indexOf(id);
+        if (index == -1) {
+            System.out.println("Ошибка. Был введен не существующий id");
+        } else {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
+            items[size - 1] = null;
+            size--;
+        }
     }
 }
