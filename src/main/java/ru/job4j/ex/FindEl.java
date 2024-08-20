@@ -16,6 +16,31 @@ public class FindEl {
         return result;
     }
 
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        boolean result = false;
+        for (int index = 0; index < abuses.length; index++) {
+            if (abuses[index].equals(value)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
+        try {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (ElementAbuseException ea) {
+            ea.printStackTrace();
+        } catch (ElementNotFoundException en) {
+            en.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         try {
             indexOf(new String[] {"Ivan", "Petr", "Irina"}, "Olga");
