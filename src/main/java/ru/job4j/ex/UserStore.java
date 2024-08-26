@@ -10,7 +10,7 @@ public class UserStore {
                 break;
             }
         }
-        if (user.getUsername() == null) {
+        if (user == null) {
             throw new UserNotFoundException("User is not found");
         }
         return user;
