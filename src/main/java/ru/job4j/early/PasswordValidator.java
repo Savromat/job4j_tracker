@@ -3,10 +3,6 @@ package ru.job4j.early;
 public class PasswordValidator {
 
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
-    private static final String CORRECT_UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String CORRECT_LOWCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
-    private static final String CORRECT_DIGIT_CHARS = "0123456789";
-    private static final String CORRECT_SPECIAL_CHARS = "$!\"#%&\'()*+-/,.:;><=?@[]^_{}|~";
 
     public static String validate(String password) {
         if (password == null) {
@@ -19,17 +15,17 @@ public class PasswordValidator {
         boolean hasLowCase = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
-        for (int i = 0; i < password.length(); i++) {
-            if (CORRECT_UPPERCASE_CHARS.contains(String.valueOf(password.charAt(i)))) {
+        for (char symbol : password.toCharArray()) {
+            if (Character.isUpperCase(symbol)) {
                 hasUpCase = true;
             }
-            if (CORRECT_LOWCASE_CHARS.contains(String.valueOf(password.charAt(i)))) {
+            if (Character.isLowerCase(symbol)) {
                 hasLowCase = true;
             }
-            if (CORRECT_DIGIT_CHARS.contains(String.valueOf(password.charAt(i)))) {
+            if (Character.isDigit(symbol)) {
                 hasDigit = true;
             }
-            if (CORRECT_SPECIAL_CHARS.contains(String.valueOf(password.charAt(i)))) {
+            if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
             }
         }
